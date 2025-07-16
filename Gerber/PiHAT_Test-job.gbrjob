@@ -3,9 +3,9 @@
     "GenerationSoftware": {
       "Vendor": "KiCad",
       "Application": "Pcbnew",
-      "Version": "9.0.2"
+      "Version": "9.0.3"
     },
-    "CreationDate": "2025-07-16T09:33:13+08:00"
+    "CreationDate": "2025-07-16T15:45:05+08:00"
   },
   "GeneralSpecs": {
     "ProjectId": {
@@ -34,8 +34,23 @@
   ],
   "FilesAttributes": [
     {
+      "Path": "PiHAT_Test-F_Cu.gbr",
+      "FileFunction": "Copper,L1,Top",
+      "FilePolarity": "Positive"
+    },
+    {
       "Path": "PiHAT_Test-B_Cu.gbr",
       "FileFunction": "Copper,L2,Bot",
+      "FilePolarity": "Positive"
+    },
+    {
+      "Path": "PiHAT_Test-F_Adhesive.gbr",
+      "FileFunction": "Glue,Top",
+      "FilePolarity": "Positive"
+    },
+    {
+      "Path": "PiHAT_Test-B_Adhesive.gbr",
+      "FileFunction": "Glue,Bot",
       "FilePolarity": "Positive"
     },
     {
