@@ -77,14 +77,13 @@ def output_csv_file(sensor,file):
 def sensors_check():
     # GPIO.setup(gpio_pin, GPIO.IN)
     # GPIO.add_event_detect(gpio_pin, GPIO.BOTH, callback=callback_function, bouncetime=100)
-    print("run sensors_check")
     file = '_data.csv'
-    Inductive1_state = Inductive(23)
-    Inductive2_state = Inductive(24)
-    Inductive3_state = Inductive(25)
-    Inductive4_state = Inductive(17)
-    Inductive5_state = Inductive(27)
-    Inductive6_state = Inductive(22)
+    Inductive1_state = Inductive(s1_input_pin)
+    Inductive2_state = Inductive(s2_input_pin)
+    Inductive3_state = Inductive(s3_input_pin)
+    Inductive4_state = Inductive(s4_input_pin)
+    Inductive5_state = Inductive(s5_input_pin)
+    Inductive6_state = Inductive(s6_input_pin)
     while True:
         if Inductive1_state.pressed():
             sensor="Sensor_1"
@@ -124,7 +123,6 @@ def sensors_check():
           print("Current state Inductive 6 On")
  
 try:
-    print("run sensors_check")
     sensors_check()
 
 except KeyboardInterrupt:
