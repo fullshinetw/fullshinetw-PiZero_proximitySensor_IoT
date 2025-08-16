@@ -2,9 +2,11 @@ import RPi.GPIO as GPIO
 import time
 import csv
 import threading
+import os
 from datetime import datetime
 from datetime import date
 
+myhost = os.uname()[1]
 s1_input_pin = 23
 s2_input_pin = 24
 s3_input_pin = 25
@@ -20,8 +22,9 @@ def callback_function(channel):
 
 def write_time_to_csv(csv_file,s):
     now = datetime.now()
+    hostname = os.uname()[1]
     timestamp = now.strftime("%Y-%m-%d %H:%M:%S")
-    data = [timestamp, s, "Detected"]
+    data = [timestamp, hostname, s, "Detected"]
     with open(csv_file, 'a', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(data)
@@ -68,9 +71,9 @@ class Inductive(threading.Thread):
                     time.sleep(0.05) # wait 50 ms
             previous = current
 
-def output_csv_file(sensor,file):
+def output_csv_file(myhost,sensor,file):
    today = date.today()
-   output_data_file = str(today) + "_" + sensor  + file
+   output_data_file = str(today) + "_" + myhost + "_" + sensor  + file
    return output_data_file
 
 # define sensor function
@@ -87,37 +90,37 @@ def sensors_check():
     while True:
         if Inductive1_state.pressed():
             sensor="Sensor_1"
-            csv_file=output_csv_file(sensor,file) 
+            csv_file=output_csv_file(myhost,sensor,file) 
             write_time_to_csv(csv_file,sensor)
             led_flash()
             print("Current state Inductive 1 On")
         elif Inductive2_state.pressed():
             sensor="Sensor_2"
-            csv_file=output_csv_file(sensor,file) 
+            csv_file=output_csv_file(myhost,sensor,file) 
             write_time_to_csv(csv_file,sensor)
             led_flash()
             print("Current state Inductive 2 On")
         elif Inductive3_state.pressed():
            sensor="Sensor_3"
-           csv_file=output_csv_file(sensor,file) 
+           csv_file=output_csv_file(myhost,sensor,file) 
            write_time_to_csv(csv_file,sensor)
            led_flash()
            print("Current state Inductive 3 On")
         elif Inductive4_state.pressed():
            sensor="Sensor_4"
-           csv_file=output_csv_file(sensor,file) 
+           csv_file=output_csv_file(myhost,sensor,file) 
            write_time_to_csv(csv_file,sensor)
            led_flash()
            print("Current state Inductive 4 On")
         elif Inductive5_state.pressed():
            sensor="Sensor_5"
-           csv_file=output_csv_file(sensor,file) 
+           csv_file=output_csv_file(myhost,sensor,file) 
            write_time_to_csv(csv_file,sensor)
            led_flash()
            print("Current state Inductive 5 On")
         elif Inductive6_state.pressed():
           sensor="Sensor_6"
-          csv_file=output_csv_file(sensor,file) 
+          csv_file=output_csv_file(myhost,sensor,file) 
           write_time_to_csv(csv_file,sensor)
           led_flash()
           print("Current state Inductive 6 On")
